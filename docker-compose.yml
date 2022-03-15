@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: ./Dockerfile_dev
+    volumes:
+      - './app:/app'
+      - '/app/node_modules'
+    ports:
+      - 3000:3000
+    command: npm start
+    # entrypoint: [ "tail", "-f", "/dev/null" ] // if you want to debug something inside the container
